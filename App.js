@@ -1,5 +1,8 @@
 import React from 'react';
+import {fetchMovies} from './api'
 import { StyleSheet, Text, View, TextInput } from 'react-native';
+import ScrollViewMovies from './ScrollViewMovies'
+import Constants from 'expo-constants'
 
 export default class App extends React.Component {
 	state = {
@@ -8,16 +11,10 @@ export default class App extends React.Component {
 	}
 	componentDidUpdate(prevState){
 		if(this.state.search !== prevState.search){
-			this.fetchResults()
+			fetchMovies(this.state.search).then(results => this.setState({movies: results}))
 		}
 	}
-	
-	async fetchResults(){
-		response = await fetch('http://www.omdbapi.com/?s='+this.state.search+'&apikey=a50c07e')
-		print = await response.json()
-		/**todo: parse through json*/
-		console.log(print)
-	}
+
   getHandler = key => val => {
     this.setState({ [key]: val });
   };
@@ -29,6 +26,8 @@ export default class App extends React.Component {
 						value = {this.state.search}
 						onChangeText = {this.getHandler('search')}
 						style = {styles.input}/>
+						
+						<ScrollViewMovies movies={this.state.movies}/>
       </View>
     );
   }
@@ -36,6 +35,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+		paddingTop: Constants.statusBarHeight,
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
