@@ -10,14 +10,20 @@ const styles = StyleSheet.create({
 })
 
 
-
-const Row = props => (
+export default class Row extends React.Component{
+	render(){
+		return(
   <View style={styles.row}>
-			<TouchableOpacity onPress = {() => console.log('new screen')}>
-				<Text>{props.title}</Text>
-				<Text>{props.year}</Text>
-			</TouchableOpacity>
-  </View>
-)
+				<TouchableOpacity onPress = {() => {
+			console.log('newScreen')
+				//this.props.navigation.goBack();
+						
+					}}>
+					 <Text>{this.props.title}</Text>
+					 <Text>{this.props.year}</Text>
+				</TouchableOpacity>
+  			</View>
+					 );
+	}
+}
 
-export default Row

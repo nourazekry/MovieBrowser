@@ -1,5 +1,4 @@
 import React from 'react';
-import {fetchMovies} from './api'
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import HomeScreen from './screens/HomeScreen'
 import SelectedMovie from './screens/SelectedMovie'

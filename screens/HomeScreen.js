@@ -1,5 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, TextInput } from 'react-native';
+import {fetchMovies} from '../api'
+
 import ScrollViewMovies from '../ScrollViewMovies'
 import Constants from 'expo-constants'
 
