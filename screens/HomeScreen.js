@@ -28,7 +28,7 @@ export default class HomeScreen extends React.Component {
 						onChangeText = {this.getHandler('search')}
 						style = {styles.input}/>
 						
-						<ScrollViewMovies movies={this.state.movies}/>
+						<ScrollViewMovies navigation = {this.props.navigation} movies={this.state.movies}/>
       </View>
     );
   }
