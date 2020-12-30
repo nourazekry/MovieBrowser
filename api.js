@@ -15,7 +15,7 @@ const fetchMovie = async(search) => {
 	const response = await fetch('http://www.omdbapi.com/?i='+search+'&apikey=a50c07e')
 	const result = await response.json()
 
-	return result.Title
+	return result
 }
 
 export {fetchMovies, fetchMovie}
